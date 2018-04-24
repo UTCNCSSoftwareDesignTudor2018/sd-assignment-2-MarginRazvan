@@ -31,4 +31,16 @@ public class EnrollmentBLL implements EnrollmentBLLInterface {
 	 enrollmentRepository.save(e);
 	}
 
+	@Override
+	public void unenroll(Student student, Course course) {
+		Enrollment e= new Enrollment(student, course);
+		enrollmentRepository.delete(e);	
+	}
+
+	@Override
+	public void updateGrade(Enrollment e) {
+		enrollmentRepository.save(e);
+		
+	}
+
 }

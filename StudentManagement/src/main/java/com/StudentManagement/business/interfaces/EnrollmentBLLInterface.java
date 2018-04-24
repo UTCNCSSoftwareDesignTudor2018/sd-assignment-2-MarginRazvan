@@ -17,4 +17,10 @@ public interface EnrollmentBLLInterface {
 	public void enroll(Student student,Course course);
 
 
+	public void unenroll(Student student, Course course);
+
+
+	public void updateGrade(Enrollment e);
+
+
 }
