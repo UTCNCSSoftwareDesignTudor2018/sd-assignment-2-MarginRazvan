@@ -16,6 +16,7 @@ import com.StudentManagement.persistence.entities.Course;
 import com.StudentManagement.persistence.entities.Enrollment;
 import com.StudentManagement.persistence.entities.EnrollmentWrapper;
 import com.StudentManagement.persistence.entities.Student;
+import com.StudentManagement.persistence.entities.StudentReport;
 import com.StudentManagement.persistence.entities.Teacher;
 
 @RestController
@@ -60,6 +61,19 @@ public class TeacherController {
 	public void enroll(@RequestBody Enrollment e)
 	{
 		teacherBLL.setGrade(e);
+	}
+	
+	
+	@RequestMapping(value="/createReport",method=RequestMethod.POST)
+	public void enroll(@RequestBody Student s)
+	{
+		teacherBLL.createReport(s);
+	}
+	
+	@RequestMapping(value="/report/{id}/")
+	public Optional<StudentReport> getReport(@PathVariable String id)
+	{
+		return teacherBLL.getReport(Integer.parseInt(id));
 	}
 	
 	

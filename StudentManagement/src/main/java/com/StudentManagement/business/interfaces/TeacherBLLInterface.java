@@ -6,7 +6,9 @@ import java.util.Optional;
 import com.StudentManagement.persistence.entities.Course;
 import com.StudentManagement.persistence.entities.Enrollment;
 import com.StudentManagement.persistence.entities.Student;
+import com.StudentManagement.persistence.entities.StudentReport;
 import com.StudentManagement.persistence.entities.Teacher;
+
 
 public interface TeacherBLLInterface {
 	public Optional<Teacher> getTeacher(Integer id);
@@ -20,5 +22,9 @@ public interface TeacherBLLInterface {
 	public void unenroll(Integer studentId, Integer courseId);
 
 	public void setGrade(Enrollment e);
+
+	public void createReport(Student s);
+
+	public Optional<StudentReport> getReport(Integer id);
 
 }

@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 
 import com.StudentManagement.business.interfaces.CourseBLLInterface;
 import com.StudentManagement.business.interfaces.EnrollmentBLLInterface;
+import com.StudentManagement.persistence.entities.StudentReport;
+import com.StudentManagement.business.interfaces.ReportBLLInterface;
 import com.StudentManagement.business.interfaces.StudentBLLInterface;
 import com.StudentManagement.business.interfaces.TeacherBLLInterface;
 import com.StudentManagement.persistence.entities.Course;
@@ -32,6 +34,9 @@ public class TeacherBLL implements TeacherBLLInterface {
 	
 	@Autowired
 	private StudentBLLInterface studentBLL;
+	
+	@Autowired
+	private ReportBLLInterface reportBLL;
 	
 	
 	public Optional<Teacher> getTeacher(Integer id)
@@ -78,6 +83,16 @@ public class TeacherBLL implements TeacherBLLInterface {
 	public void setGrade(Enrollment e) {
 		enrollmentBLL.updateGrade(e);
 		
+	}
+
+	@Override
+	public void createReport(Student s) {
+		reportBLL.save(s);		
+	}
+
+	@Override
+	public Optional<StudentReport> getReport(Integer id) {
+		return reportBLL.getReport(id);
 	}
 
 }
