@@ -6,13 +6,14 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.StudentManagement.business.interfaces.EnrollmentBLLInterface;
 import com.StudentManagement.persistence.entities.Course;
 import com.StudentManagement.persistence.entities.Enrollment;
 import com.StudentManagement.persistence.entities.Student;
 import com.StudentManagement.persistence.repository.EnrollmentRepository;
 
 @Service
-public class EnrollmentBLL {
+public class EnrollmentBLL implements EnrollmentBLLInterface {
 	
 	
 	@Autowired

@@ -7,20 +7,23 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.StudentManagement.business.interfaces.CourseBLLInterface;
+import com.StudentManagement.business.interfaces.EnrollmentBLLInterface;
+import com.StudentManagement.business.interfaces.StudentBLLInterface;
 import com.StudentManagement.persistence.entities.Course;
 import com.StudentManagement.persistence.entities.Enrollment;
 import com.StudentManagement.persistence.entities.Student;
 import com.StudentManagement.persistence.repository.StudentRepository;
 
 @Service
-public class StudentBLL {
+public class StudentBLL implements StudentBLLInterface {
 
 	@Autowired
 	private StudentRepository studentRepository;
 	
-	@Autowired CourseBLL courseBLL;
+	@Autowired CourseBLLInterface courseBLL;
 	
-	@Autowired EnrollmentBLL enrollmentBLL;
+	@Autowired EnrollmentBLLInterface enrollmentBLL;
 	
 	
 	public List<Student> getAllStudents()

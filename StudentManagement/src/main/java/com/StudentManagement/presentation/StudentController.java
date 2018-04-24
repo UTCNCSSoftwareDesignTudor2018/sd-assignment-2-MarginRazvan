@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.StudentManagement.business.implementation.StudentBLL;
+import com.StudentManagement.business.interfaces.StudentBLLInterface;
 import com.StudentManagement.persistence.builder.StudentBuilder;
 import com.StudentManagement.persistence.entities.Course;
 import com.StudentManagement.persistence.entities.Enrollment;
@@ -25,7 +26,7 @@ import com.StudentManagement.persistence.entities.Student;
 public class StudentController {
 
 	@Autowired
-	private StudentBLL studentBLL;
+	private StudentBLLInterface studentBLL;
 	
 	
 	
