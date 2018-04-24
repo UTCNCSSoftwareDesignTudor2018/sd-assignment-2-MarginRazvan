@@ -1,12 +1,14 @@
 package com.StudentManagement.persistence.entities;
 
 import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -15,21 +17,20 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table(name="enrollments")
 public class Enrollment {
 	
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Integer id;
+	@EmbeddedId
+	private EnrollmentWrapper id;
 	
 	@Column(nullable=true)
 	private Integer grade;
 	
 	@ManyToOne
 	@JsonIgnore
-	@JoinColumn(name="studentId",referencedColumnName="id")
+	@MapsId("studentId")
 	private Student student;
 	
 	@ManyToOne
 	@JsonIgnore
-	@JoinColumn(name="courseId",referencedColumnName="id")
+	@MapsId("courseId")
 	private Course course;
 	
 	
@@ -38,15 +39,38 @@ public class Enrollment {
 		
 	}
 
-	public Integer getId() {
+
+
+
+
+	public Enrollment( Student student, Course course) {
+		super();
+		this.student = student;
+		this.course = course;
+		this.id = new EnrollmentWrapper(student.getStudent_id(),course.getId());
+	}
+
+
+
+
+
+	public EnrollmentWrapper getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+
+
+
+
+	public void setId(EnrollmentWrapper id) {
 		this.id = id;
 	}
 
-	public int getGrade() {
+
+
+
+
+	public Integer getGrade() {
 		return grade;
 	}
 

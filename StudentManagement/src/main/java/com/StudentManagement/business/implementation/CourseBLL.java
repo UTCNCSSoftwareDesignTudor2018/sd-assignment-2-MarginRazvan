@@ -15,5 +15,11 @@ public class CourseBLL {
 	@Autowired
 	private CourseRepository courseRepository;
 	
+	
+	public Optional<Course> getCourse(Integer id)
+	{
+		return courseRepository.findById(id);
+	}
+	
 
 }

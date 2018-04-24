@@ -18,7 +18,7 @@ public class StudentBLL {
 	@Autowired
 	private StudentRepository studentRepository;
 	
-	//@Autowired CourseBLL courseBLL;
+	@Autowired CourseBLL courseBLL;
 	
 	@Autowired EnrollmentBLL enrollmentBLL;
 	
@@ -49,10 +49,29 @@ public class StudentBLL {
 		return courses;
 	}
 	
-	public Student updateInfo(Student s)
+	public List<Enrollment> viewGrades(Integer id) 
 	{
-		return studentRepository.save(s);
+		return enrollmentBLL.findByStudentId(id);
 	}
+	
+	public void updateInfo(Student s)
+	{
+		 studentRepository.save(s);
+	}
+	
+	public void enroll(Integer student_id,Integer course_id)
+	{
+		Optional<Student> student = studentRepository.findById(student_id);
+		Optional<Course> course = courseBLL.getCourse(course_id);
+		
+		enrollmentBLL.enroll(student.get(),course.get());
+		
+	}
+
+
+
+	
+	
 	
 	
 }

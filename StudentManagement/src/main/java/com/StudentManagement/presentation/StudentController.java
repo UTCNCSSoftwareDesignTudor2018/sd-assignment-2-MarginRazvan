@@ -16,6 +16,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.StudentManagement.business.implementation.StudentBLL;
 import com.StudentManagement.persistence.builder.StudentBuilder;
 import com.StudentManagement.persistence.entities.Course;
+import com.StudentManagement.persistence.entities.Enrollment;
+import com.StudentManagement.persistence.entities.EnrollmentWrapper;
 import com.StudentManagement.persistence.entities.Student;
 
 @RestController
@@ -40,24 +42,31 @@ public class StudentController {
 		return studentBLL.getStudent(Integer.parseInt(id));
 	}
 	
-//	@RequestMapping(value="/updateProfile",method=RequestMethod.PUT)
-//	public void updateProfile(@RequestBody Student s)
-//	{
-//		StudentBuilder builder=new StudentBuilder();
-//		builder.setCnp(s.getCnp());
-//		builder.setEmail(s.getEmail());
-//		builder.setId(s.getStudent_id());
-//		builder.setName(s.getName());
-//		builder.setStudentGroup(s.getStudent_group());
-//		Student student =builder.createStudent();
-//		studentBLL.updateInfo(student);
-//	}
-//	
+	@RequestMapping(value="/updateProfile",method=RequestMethod.POST)
+	public void updateProfile(@RequestBody Student s)
+	{
+		studentBLL.updateInfo(s);
+	}
+	
 	
 	@RequestMapping(value="/{id}/enrollments")
 	public List<Course> getEnrollments(@PathVariable String id)
 	{
 		return studentBLL.viewEnrollments(Integer.parseInt(id));
+	}
+	
+	@RequestMapping(value="/enroll",method=RequestMethod.POST)
+	public void enroll(@RequestBody EnrollmentWrapper e)
+	{
+		studentBLL.enroll(e.getStudentId(),e.getCourseId());
+	}
+	
+	@RequestMapping(value="/{id}/grades")
+	public List<Enrollment> getGrades(@PathVariable String id)
+	{
+	
+		return studentBLL.viewGrades(Integer.parseInt(id));
+
 	}
 	
 	
