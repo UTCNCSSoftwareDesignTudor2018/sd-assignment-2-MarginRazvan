@@ -11,6 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
 import javax.persistence.Table;
 
+import com.StudentManagement.persistence.builder.EnrollmentBuilder;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
@@ -43,15 +44,28 @@ public class Enrollment {
 
 
 
+
 	public Enrollment( Student student, Course course) {
 		super();
 		this.student = student;
 		this.course = course;
 		this.id = new EnrollmentWrapper(student.getStudent_id(),course.getId());
 	}
+	
+	
 
 
 
+
+
+	public Enrollment(EnrollmentBuilder builder) {
+		// TODO Auto-generated constructor stub
+		
+		this.id = builder.id;
+		this.course=builder.course;
+		this.student=builder.student;
+	
+	}
 
 
 	public EnrollmentWrapper getId() {

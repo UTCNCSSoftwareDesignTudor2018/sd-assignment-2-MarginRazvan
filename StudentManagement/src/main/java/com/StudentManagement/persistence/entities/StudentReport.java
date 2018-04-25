@@ -1,5 +1,8 @@
 package com.StudentManagement.persistence.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,6 +15,7 @@ public class StudentReport {
 	private Integer id;
 	
 	private Student student;
+	
 
 	
 	
@@ -20,6 +24,7 @@ public class StudentReport {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
 
 	public Integer getId() {
 		return id;

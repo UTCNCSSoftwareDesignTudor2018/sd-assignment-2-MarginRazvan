@@ -87,7 +87,12 @@ public class TeacherBLL implements TeacherBLLInterface {
 
 	@Override
 	public void createReport(Student s) {
-		reportBLL.save(s);		
+		
+		StudentReport report= new StudentReport();
+		report.setStudent(s);
+		report.setId(s.getStudent_id());
+		
+		reportBLL.save(report);		
 	}
 
 	@Override

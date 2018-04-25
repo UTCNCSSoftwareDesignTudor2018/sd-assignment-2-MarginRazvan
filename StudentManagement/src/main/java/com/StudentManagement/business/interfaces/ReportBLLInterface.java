@@ -6,7 +6,7 @@ import com.StudentManagement.persistence.entities.StudentReport;
 import com.StudentManagement.persistence.entities.Student;
 
 public interface ReportBLLInterface {
-	public void save(Student student);
+	public void save(StudentReport report);
 	public Optional<StudentReport> getReport(Integer id);
 
 }

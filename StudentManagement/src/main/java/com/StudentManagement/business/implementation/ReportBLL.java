@@ -16,18 +16,17 @@ public class ReportBLL implements ReportBLLInterface {
 	@Autowired
 	private ReportRepository reportRepository;
 	
-	
-	public void save(Student student)
-	{
-		StudentReport report= new StudentReport();
-		report.setStudent(student);
-		report.setId(student.getStudent_id());
-		reportRepository.save(report);
-	}
+
 	
 	public Optional<StudentReport> getReport(Integer id)
 	{
 		return reportRepository.findById(id);
+	}
+
+	@Override
+	public void save(StudentReport report) {
+		// TODO Auto-generated method stub
+		reportRepository.save(report);
 	}
 	
 	
