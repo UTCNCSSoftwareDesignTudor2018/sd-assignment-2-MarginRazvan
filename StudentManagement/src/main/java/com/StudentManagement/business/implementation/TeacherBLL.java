@@ -13,6 +13,7 @@ import com.StudentManagement.persistence.entities.StudentReport;
 import com.StudentManagement.business.interfaces.ReportBLLInterface;
 import com.StudentManagement.business.interfaces.StudentBLLInterface;
 import com.StudentManagement.business.interfaces.TeacherBLLInterface;
+import com.StudentManagement.persistence.builder.StudentReportBuilder;
 import com.StudentManagement.persistence.entities.Course;
 import com.StudentManagement.persistence.entities.Enrollment;
 import com.StudentManagement.persistence.entities.Student;
@@ -88,9 +89,8 @@ public class TeacherBLL implements TeacherBLLInterface {
 	@Override
 	public void createReport(Student s) {
 		
-		StudentReport report= new StudentReport();
-		report.setStudent(s);
-		report.setId(s.getStudent_id());
+		
+		StudentReport report = new StudentReportBuilder().setId(s.getStudent_id()).setStudent(s).build();
 		
 		reportBLL.save(report);		
 	}

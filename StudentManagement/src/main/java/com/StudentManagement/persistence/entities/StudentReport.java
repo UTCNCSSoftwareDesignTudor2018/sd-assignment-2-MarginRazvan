@@ -7,6 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import com.StudentManagement.persistence.builder.StudentReportBuilder;
+
 public class StudentReport {
 	
 	
@@ -23,6 +25,12 @@ public class StudentReport {
 	public StudentReport() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+	
+	public StudentReport(StudentReportBuilder builder)
+	{
+		this.id = builder.id;
+		this.student=builder.student;
 	}
 	
 
